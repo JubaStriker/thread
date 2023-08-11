@@ -119,22 +119,22 @@
 
 /* Clerk Responsive fix */
 .cl-organizationSwitcherTrigger .cl-userPreview .cl-userPreviewTextContainer {
-  @apply max-sm: hidden;
+  @apply max-sm:hidden;
 }
 
 .cl-organizationSwitcherTrigger .cl-organizationPreview .cl-organizationPreviewTextContainer {
-  @apply max-sm: hidden;
+  @apply max-sm:hidden;
 }
 
 /* Shadcn Component Styles */
 
 /* Tab */
 .tab {
-  @apply flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]: bg-[#0e0e12] data-[state=active]:text-light-2 !important;
+  @apply flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2 !important;
 }
 
 .no-focus {
-  @apply focus-visible: ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
 }
 
 /* Account Profile  */
@@ -143,7 +143,7 @@
 }
 
 .account-form_image-input {
-  @apply cursor-pointer border-none bg-transparent outline-none file: text-blue !important;
+  @apply cursor-pointer border-none bg-transparent outline-none file:text-blue !important;
 }
 
 .account-form_input {
@@ -152,9 +152,9 @@
 
 /* Comment Form */
 .comment-form {
-  @apply mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5 max-xs: flex-col !important;
+  @apply mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5 max-xs:flex-col !important;
 }
 
 .comment-form_btn {
-  @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs: w-full !important;
+  @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
 }
