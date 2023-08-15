@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs";
 async function Page() {
 
     const user = await currentUser();
+
     const userInfo = {};
     const userData = {
         id: user?.id,
@@ -11,7 +12,7 @@ async function Page() {
         username: userInfo?.username || user?.username,
         name: userInfo?.name || user?.firstName || "",
         bio: userInfo?.bio || "",
-        image: userInfo?.image || user.photoUrl
+        image: userInfo?.image || user.imageUrl
     }
 
     return (
@@ -21,7 +22,7 @@ async function Page() {
 
             <section className="mt-9 bg-dark-2 p-10">
                 <AccountProfile
-                    use r={userData}
+                    user={userData}
                     btnTitle="Continue" />
             </section>
         </main>
