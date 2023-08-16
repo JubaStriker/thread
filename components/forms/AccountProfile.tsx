@@ -15,6 +15,7 @@ import * as z from "zod"
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import { Textarea } from "../ui/textarea";
+import { isBase64Image } from "@/lib/utils";
 
 interface Props {
     user: {
@@ -66,8 +67,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     }
 
     function onSubmit(values: z.infer<typeof UserValidation>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+
+        const blob = values.profile_photo;  //Data of image is usually called blob//
+        const hasImageChanged = isBase64Image(blob)
         console.log(values)
     }
 
