@@ -4,14 +4,23 @@ import { revalidatePath } from "next/cache";
 import User from "../models/user.model";
 import { connectToDb } from "../mongoose"
 
-export async function updateUser(
+interface Params {
     userId: string,
     username: string,
     name: string,
     bio: string,
     image: string,
     path: string
-): Promise<void> {
+}
+
+export async function updateUser({
+    userId,
+    username,
+    name,
+    bio,
+    image,
+    path
+}: Params): Promise<void> {
 
     connectToDb();
 
@@ -32,7 +41,7 @@ export async function updateUser(
             revalidatePath(path);
         }
     }
-    catch (error) {
-        console.log(error);
+    catch (error: any) {
+        throw new Error(`Failed to create/update user: ${error.message}`)
     }
 }
