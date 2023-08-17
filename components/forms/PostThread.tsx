@@ -10,10 +10,10 @@ import {
 } from "@/components/ui/form"
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { UserValidation } from '@/lib/validations/user';
 import * as z from "zod"
 import { updateUser } from "@/lib/actions/user.action";
 import { usePathname, useRouter } from "next/navigation";
+import { ThreadValidation } from "@/lib/validations/thread";
 
 
 const PostThread = ({ userId }: { userId: string }) => {
@@ -22,7 +22,7 @@ const PostThread = ({ userId }: { userId: string }) => {
     const pathname = usePathname()
 
     const form = useForm({
-        resolver: zodResolver(UserValidation),
+        resolver: zodResolver(ThreadValidation),
         defaultValues: {
             thread: '',
             accountId: userId
