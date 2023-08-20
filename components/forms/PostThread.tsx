@@ -11,10 +11,8 @@ import {
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from "zod"
-import { updateUser } from "@/lib/actions/user.action";
 import { redirect, usePathname, useRouter } from "next/navigation";
 import { ThreadValidation } from "@/lib/validations/thread";
-import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { createThread } from "@/lib/actions/thread.actions";
 import { Toaster, toast } from "react-hot-toast";
@@ -52,7 +50,7 @@ const PostThread = ({ userId }: { userId: string }) => {
                     },
                 }
             );
-
+            redirect('/home')
         }
     }
     return (
