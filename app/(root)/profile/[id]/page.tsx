@@ -1,6 +1,7 @@
 import PostThread from "@/components/forms/PostThread";
 import ProfileHeader from "@/components/shared/ProfileHeader";
-import { TabsList, Tabs, TabsTrigger } from "@/components/ui/tabs";
+import ThreadsTab from "@/components/shared/ThreadsTab";
+import { TabsList, Tabs, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { profileTabs } from "@/constants";
 import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
@@ -54,6 +55,14 @@ const Page = async ({ params }: { params: { id: string } }) => {
                             </TabsTrigger>
                         ))}
                     </TabsList>
+                    {profileTabs.map((tab, index) =>
+                        <TabsContent key={`content-${tab.label}`} value={tab.value} className="w-full text-light-1">
+                            <ThreadsTab
+                                currentUserId={user.id}
+                                accountId={userInfo.id}
+                                accountType="User"
+                            />
+                        </TabsContent>)}
                 </Tabs>
             </div>
         </section>
