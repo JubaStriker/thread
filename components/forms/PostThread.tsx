@@ -15,7 +15,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { ThreadValidation } from "@/lib/validations/thread";
 import { Textarea } from "../ui/textarea";
 import { createThread } from "@/lib/actions/thread.actions";
-import { Toaster, toast } from "react-hot-toast";
+
 
 
 
@@ -41,15 +41,6 @@ const PostThread = ({ userId }: { userId: string }) => {
         })
 
         if (data) {
-            toast.success('Thread posted',
-                {
-                    style: {
-                        borderRadius: '5px',
-                        background: '#333',
-                        color: '#fff',
-                    },
-                }
-            );
             router.push("/");
         }
     }
@@ -83,7 +74,7 @@ const PostThread = ({ userId }: { userId: string }) => {
                     Post thread
                 </Button>
             </form>
-            <Toaster />
+
         </Form>
     );
 };

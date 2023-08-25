@@ -14,7 +14,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from "zod"
 import { usePathname, useRouter } from "next/navigation";
 import { CommentValidation } from "@/lib/validations/thread";
-import { Toaster, toast } from "react-hot-toast";
 import Image from "next/image";
 import { addCommentToThread } from "@/lib/actions/thread.actions";
 
@@ -39,7 +38,6 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
 
     const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
         await addCommentToThread(threadId, values.thread, JSON.parse(currentUserId), pathname);
-        toast.success('Comment posted')
         form.reset();
     }
     return (
@@ -76,7 +74,6 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                     Reply
                 </Button>
             </form>
-            <Toaster />
         </Form>
     );
 };
