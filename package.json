@@ -37,6 +37,7 @@
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
     "uploadthing": "^5.3.3",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "svix": "^1.7.0"
   }
 }
