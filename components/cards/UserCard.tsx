@@ -36,6 +36,9 @@ const UserCard = ({
             <Button className="user-card_btn" onClick={() => router.push(`/profile/${id}`)}>
                 View
             </Button>
+            <Button className="user-card_btn" onClick={() => router.push(`/profile/${id}`)}>
+                View
+            </Button>
 
 
         </article>
