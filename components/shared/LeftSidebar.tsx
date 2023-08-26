@@ -32,7 +32,7 @@ const LeftSidebar = () => {
                                 height={24}
                             />
 
-                            <p className='text-light-1 max-lg:hidden'>{link.label}</p>
+                            <p className={`text-light-1 max-lg:hidden  ${isActive ? "" : 'hover:text-primary-500'}`}>{link.label}</p>
                         </Link>
                     )
                 })}
@@ -48,7 +48,7 @@ const LeftSidebar = () => {
                                 width={24}
                                 height={24}
                             />
-                            <p className='text-light-2 max-lg:hidden'>Logout</p>
+                            <p className='text-light-2 max-lg:hidden hover:text-primary-500'>Logout</p>
                         </div>
                     </SignOutButton>
                 </SignedIn>
