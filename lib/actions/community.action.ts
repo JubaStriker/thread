@@ -11,7 +11,7 @@ import { connectToDb } from "../mongoose";
 export async function createCommunity(
     id: string,
     name: string,
-    username: string,
+    username: string | any,
     image: string,
     bio: string,
     createdById: string // Change the parameter name to reflect it's an id
@@ -20,10 +20,16 @@ export async function createCommunity(
         connectToDb();
 
         // Find the user with the provided unique id
-        const user = await User.findOne({ id: createdById });
+        const user = await User.findOne({ _id: createdById });
 
         if (!user) {
             throw new Error("User not found"); // Handle the case if the user with the id is not found
+        }
+
+        const communityDetails = await Community.find({ id })
+
+        if (communityDetails.length > 0) {
+            return null;
         }
 
         const newCommunity = new Community({
@@ -40,7 +46,7 @@ export async function createCommunity(
         // Update User model
         user.communities.push(createdCommunity._id);
         await user.save();
-
+        console.log(createCommunity, "Created Community");
         return createdCommunity;
     } catch (error) {
         // Handle any errors
