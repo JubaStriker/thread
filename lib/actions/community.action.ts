@@ -101,6 +101,8 @@ export async function fetchCommunityPosts(id: string) {
             ],
         });
 
+
+
         return communityPosts;
     } catch (error) {
         // Handle any errors

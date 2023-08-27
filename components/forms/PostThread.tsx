@@ -27,7 +27,6 @@ const PostThread = ({ userId }: { userId: string }) => {
     const pathname = usePathname()
     const { organization } = useOrganization();
 
-    console.log(organization?.slug, "Community");
 
     const form = useForm({
         resolver: zodResolver(ThreadValidation),
@@ -51,7 +50,6 @@ const PostThread = ({ userId }: { userId: string }) => {
             path: pathname,
         })
 
-        console.log(data);
         router.push("/");
 
 

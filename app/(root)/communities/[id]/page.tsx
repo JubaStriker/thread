@@ -1,10 +1,10 @@
 
+import UserCard from "@/components/cards/UserCard";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import ThreadsTab from "@/components/shared/ThreadsTab";
 import { TabsList, Tabs, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { communityTabs } from "@/constants";
 import { fetchCommunityDetails } from "@/lib/actions/community.action";
-
 import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
 
@@ -21,6 +21,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     }
 
     const communityDetails = await fetchCommunityDetails(params.id)
+
 
     return (
         <section>
@@ -60,21 +61,28 @@ const Page = async ({ params }: { params: { id: string } }) => {
                         <ThreadsTab
                             currentUserId={user.id}
                             accountId={communityDetails._id}
-                            accountType="User"
+                            accountType="Community"
                         />
                     </TabsContent>
                     <TabsContent value="members" className="w-full text-light-1">
-                        <ThreadsTab
-                            currentUserId={user.id}
-                            accountId={communityDetails._id}
-                            accountType="User"
-                        />
+                        <section className="mt-9 flex flex-col gap-10">
+                            {communityDetails?.members?.map((member: any) => (
+                                <UserCard
+                                    key={member.id}
+                                    id={member.id}
+                                    name={member.name}
+                                    username={member.username}
+                                    imgUrl={member.image}
+                                    personType="User"
+                                />
+                            ))}
+                        </section>
                     </TabsContent>
                     <TabsContent value="requests" className="w-full text-light-1">
                         <ThreadsTab
                             currentUserId={user.id}
                             accountId={communityDetails._id}
-                            accountType="User"
+                            accountType="Community"
                         />
                     </TabsContent>
                 </Tabs>
