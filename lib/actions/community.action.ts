@@ -182,7 +182,7 @@ export async function addMemberToCommunity(
         }
 
         // Find the user by their unique id
-        const user = await User.findOne({ id: memberId });
+        const user = await User.findOne({ $or: [{ id: memberId }, { _id: memberId }] });
 
         if (!user) {
             throw new Error("User not found");
@@ -190,7 +190,7 @@ export async function addMemberToCommunity(
 
         // Check if the user is already a member of the community
         if (community.members.includes(user._id)) {
-            throw new Error("User is already a member of the community");
+            return null;
         }
 
         // Add the user's _id to the members array in the community

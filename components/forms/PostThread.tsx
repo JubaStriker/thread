@@ -16,7 +16,7 @@ import { ThreadValidation } from "@/lib/validations/thread";
 import { Textarea } from "../ui/textarea";
 import { createThread } from "@/lib/actions/thread.actions";
 import { useOrganization } from "@clerk/nextjs";
-import { createCommunity } from "@/lib/actions/community.action";
+import { addMemberToCommunity, createCommunity } from "@/lib/actions/community.action";
 
 
 
@@ -41,6 +41,7 @@ const PostThread = ({ userId }: { userId: string }) => {
 
         if (organization) {
             await createCommunity(organization.id, organization.name, organization.slug, organization.imageUrl, "organization bio", userId)
+            await addMemberToCommunity(organization.id, userId);
         }
 
         const data = await createThread({
