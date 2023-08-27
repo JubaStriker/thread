@@ -1,17 +1,20 @@
 
 import UserCard from "@/components/cards/UserCard";
+import Pagination from "@/components/shared/Pagination";
 import Searchbar from "@/components/shared/Searchbar";
-import { profileTabs } from "@/constants";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export const metadata = {
     title: "Thread - Search",
     description: "A Next.js 13 Meta Thread Application"
 }
-const Page = async () => {
+const Page = async ({
+    searchParams,
+}: {
+    searchParams: { [key: string]: string | undefined };
+}) => {
 
     const user = await currentUser()
     if (!user) {
@@ -51,6 +54,11 @@ const Page = async () => {
                     </>
                 }
             </div>
+            <Pagination
+                path='search'
+                pageNumber={searchParams?.page ? +searchParams.page : 1}
+                isNext={result.isNext}
+            />
         </section>
     );
 };
