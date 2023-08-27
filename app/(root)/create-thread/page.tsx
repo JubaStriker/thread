@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-    title: "Thread - Create Thread",
+    title: "Vibenet - Create Thread",
     description: "A Next.js 13 Meta Thread Application"
 }
 

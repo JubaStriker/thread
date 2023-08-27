@@ -6,7 +6,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-    title: "Thread - Activity",
+    title: "Vibenet - Activity",
     description: "A Next.js 13 Meta Thread Application"
 }
 const Page = async () => {

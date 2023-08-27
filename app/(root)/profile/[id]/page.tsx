@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUser } from "@/lib/actions/user.action";
 
 export const metadata = {
-    title: "Thread - Profile",
+    title: "Vibenet - Profile",
     description: "A Next.js 13 Meta Thread Application"
 }
 

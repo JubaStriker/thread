@@ -7,7 +7,7 @@ import Searchbar from "@/components/shared/Searchbar";
 import Pagination from "@/components/shared/Pagination";
 
 export const metadata = {
-    title: "Thread - Communities",
+    title: "Vibenet - Communities",
     description: "A Next.js 13 Meta Thread Application"
 }
 

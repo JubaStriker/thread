@@ -7,7 +7,7 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-    title: "Thread - Search",
+    title: "Vibenet - Search",
     description: "A Next.js 13 Meta Thread Application"
 }
 const Page = async ({

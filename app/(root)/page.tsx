@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 //app/page.tsx
 export const metadata = {
-  title: "Thread - Home",
+  title: "Vibenet - Home",
   description: "A Next.js 13 Meta Thread Application"
 }
 

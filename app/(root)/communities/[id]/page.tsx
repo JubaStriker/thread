@@ -10,7 +10,7 @@ import Image from "next/image";
 
 
 export const metadata = {
-    title: "Thread - Communities",
+    title: "Vibenet - Communities",
     description: "A Next.js 13 Meta Thread Application"
 }
 const Page = async ({ params }: { params: { id: string } }) => {
