@@ -6,6 +6,8 @@ import ThreadsTab from "@/components/shared/ThreadsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUser } from "@/lib/actions/user.action";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const metadata = {
     title: "Vibenet - Profile",
@@ -21,14 +23,21 @@ async function Page({ params }: { params: { id: string } }) {
 
     return (
         <section>
-            <ProfileHeader
-                accountId={userInfo.id}
-                authUserId={user.id}
-                name={userInfo.name}
-                username={userInfo.username}
-                imgUrl={userInfo.image}
-                bio={userInfo.bio}
-            />
+            <header className="flex justify-between">
+                <ProfileHeader
+                    accountId={userInfo.id}
+                    authUserId={user.id}
+                    name={userInfo.name}
+                    username={userInfo.username}
+                    imgUrl={userInfo.image}
+                    bio={userInfo.bio}
+                />
+                <Link href={`/profile/edit`}>
+                    <Button size='sm' className='community-card_btn'>
+                        Edit
+                    </Button>
+                </Link>
+            </header>
 
             <div className='mt-9'>
                 <Tabs defaultValue='threads' className='w-full'>
