@@ -1,11 +1,14 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-
-
 import AccountProfile from "@/components/forms/AccountProfile";
 import { fetchUser } from "@/lib/actions/user.action";
 
 // Copy paste most of the code as it is from the /onboarding
+
+export const metadata = {
+    title: "Vibenet - Edit Profile",
+    description: "A Next.js 13 Meta Thread Application"
+}
 
 async function Page() {
     const user = await currentUser();
