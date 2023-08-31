@@ -24,12 +24,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`${inter.className}  scrollbar-thin scrollbar-rounded-lg scrollbar-thumb-primary-500 scrollbar-track-gray-100`}>
           <Topbar />
           <main className='flex flex-row'>
             <LeftSidebar />
-            <section className='main-container'>
-              <div className='w-full  max-w-4xl'>
+            <section className='main-container '>
+              <div className='w-full  max-w-4xl '>
                 {children}
               </div>
             </section>

@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google'
 import '../globals.css';
 
 export const metadata = {
-    title: "Thread",
-    description: "A Next.js 13 Meta Thread Application"
+    title: "Vibenet",
+    description: "A Next.js 13 Application"
 }
 
 // Import font-----
