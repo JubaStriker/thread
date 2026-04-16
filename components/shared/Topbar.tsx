@@ -23,7 +23,12 @@ const Topbar = async () => {
                     appearance={{
                         baseTheme: dark,
                         elements: {
-                            organizationSwitcherTrigger: 'py-2 px-4'
+                            organizationSwitcherTrigger: 'py-2 px-4',
+                            organizationSwitcherTriggerIcon: 'text-white',
+                            organizationPreviewTextContainer: 'text-white',
+                            organizationPreviewMainIdentifier: 'text-white',
+                            organizationPreviewSecondaryIdentifier: 'text-white',
+                            organizationPreviewAvatarContainer: 'text-white',
                         }
                     }} />
 

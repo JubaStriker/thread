@@ -19,10 +19,10 @@ const LeftSidebar = () => {
 
                     const isActive = (pathName.includes(link.route) && link.route.length > 1 || pathName === link.route)
 
-                    if (link.route === '/profile') link.route = `${link.route}/${userId}`
+                    const href = link.route === '/profile' ? `${link.route}/${userId}` : link.route;
                     return (
                         <Link
-                            href={link.route}
+                            href={href}
                             key={link.label}
                             className={`leftsidebar_link ${isActive && 'bg-primary-500'}`}
                         >
