@@ -38,6 +38,9 @@
     "uploadthing": "^5.3.3",
     "zod": "^3.21.4"
   },
+  "engines": {
+    "node": ">=20.x"
+  },
   "devDependencies": {
     "encoding": "^0.1.13",
     "tailwind-scrollbar": "^3.0.5"
