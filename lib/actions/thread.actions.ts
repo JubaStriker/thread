@@ -42,10 +42,11 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
     }); // Get the total count of posts
 
     const posts = await postsQuery.lean().exec();
+    const serialized = JSON.parse(JSON.stringify(posts));
 
-    const isNext = totalPostsCount > skipAmount + posts.length;
+    const isNext = totalPostsCount > skipAmount + serialized.length;
 
-    return { posts, isNext };
+    return { posts: serialized, isNext };
 }
 
 interface Params {

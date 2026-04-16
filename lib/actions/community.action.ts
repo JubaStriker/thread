@@ -47,7 +47,7 @@ export async function createCommunity(
         user.communities.push(createdCommunity._id);
         await user.save();
         console.log(createCommunity, "Created Community");
-        return createdCommunity.toObject();
+        return createdCommunity._id.toString();
     } catch (error) {
         // Handle any errors
         console.error("Error creating community:", error);
@@ -201,7 +201,7 @@ export async function addMemberToCommunity(
         user.communities.push(community._id);
         await user.save();
 
-        return community.toObject();
+        return community._id.toString();
     } catch (error) {
         // Handle any errors
         console.error("Error adding member to community:", error);
