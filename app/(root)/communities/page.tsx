@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import CommunityCard from "@/components/cards/CommunityCard";
 import { fetchUser } from "@/lib/actions/user.action";
@@ -14,8 +14,9 @@ export const metadata = {
 async function Page({
     searchParams,
 }: {
-    searchParams: { [key: string]: string | undefined };
+    searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
+    const { q, page } = await searchParams;
     const user = await currentUser();
     if (!user) return null;
 
@@ -23,8 +24,8 @@ async function Page({
     if (!userInfo?.onboarded) redirect("/onboarding");
 
     const result = await fetchCommunities({
-        searchString: searchParams.q,
-        pageNumber: searchParams?.page ? +searchParams.page : 1,
+        searchString: q,
+        pageNumber: page ? +page : 1,
         pageSize: 25,
     });
 
@@ -57,7 +58,7 @@ async function Page({
             </section>
             <Pagination
                 path='communities'
-                pageNumber={searchParams?.page ? +searchParams.page : 1}
+                pageNumber={page ? +page : 1}
                 isNext={result.isNext}
             />
         </>

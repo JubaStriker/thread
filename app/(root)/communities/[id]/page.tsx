@@ -5,7 +5,7 @@ import ThreadsTab from "@/components/shared/ThreadsTab";
 import { TabsList, Tabs, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { communityTabs } from "@/constants";
 import { fetchCommunityDetails } from "@/lib/actions/community.action";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 
 
@@ -13,14 +13,15 @@ export const metadata = {
     title: "Vibenet - Communities",
     description: "A Next.js 13 Meta Thread Application"
 }
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
+    const { id } = await params;
     const user = await currentUser()
     if (!user) {
         return null;
     }
 
-    const communityDetails = await fetchCommunityDetails(params.id)
+    const communityDetails = await fetchCommunityDetails(id)
 
 
     return (
