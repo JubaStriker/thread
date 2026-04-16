@@ -13,14 +13,15 @@ export const metadata = {
     title: "Vibenet - Communities",
     description: "A Next.js 13 Meta Thread Application"
 }
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
+    const { id } = await params;
     const user = await currentUser()
     if (!user) {
         return null;
     }
 
-    const communityDetails = await fetchCommunityDetails(params.id)
+    const communityDetails = await fetchCommunityDetails(id)
 
 
     return (

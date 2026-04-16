@@ -13,9 +13,10 @@ export const metadata = {
 const Page = async ({
     searchParams,
 }: {
-    searchParams: { [key: string]: string | undefined };
+    searchParams: Promise<{ [key: string]: string | undefined }>;
 }) => {
 
+    const { page } = await searchParams;
     const user = await currentUser()
     if (!user) {
         return null;
@@ -56,7 +57,7 @@ const Page = async ({
             </div>
             <Pagination
                 path='search'
-                pageNumber={searchParams?.page ? +searchParams.page : 1}
+                pageNumber={page ? +page : 1}
                 isNext={result.isNext}
             />
         </section>
