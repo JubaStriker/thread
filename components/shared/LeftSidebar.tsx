@@ -4,6 +4,7 @@ import { useAuth, useClerk } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
+import { useState } from 'react';
 
 const LeftSidebar = () => {
 
@@ -11,6 +12,12 @@ const LeftSidebar = () => {
     const pathName = usePathname();
     const { userId, isSignedIn } = useAuth();
     const { signOut } = useClerk();
+    const [isSigningOut, setIsSigningOut] = useState(false);
+
+    const handleSignOut = async () => {
+        setIsSigningOut(true);
+        await signOut({ redirectUrl: '/sign-in' });
+    };
 
     return (
         <section className="custom-scrollbar leftsidebar">
@@ -42,16 +49,22 @@ const LeftSidebar = () => {
             <div className='mt-10 px-6'>
                 {isSignedIn && (
                     <div
-                        className='flex cursor-pointer gap-4 p-4'
-                        onClick={() => signOut({ redirectUrl: '/sign-in' })}
+                        className={`flex cursor-pointer gap-4 p-4 ${isSigningOut ? 'opacity-50 pointer-events-none' : ''}`}
+                        onClick={handleSignOut}
                     >
-                        <Image
-                            src='/assets/logout.svg'
-                            alt='logout'
-                            width={24}
-                            height={24}
-                        />
-                        <p className='text-light-2 max-lg:hidden hover:text-primary-500'>Logout</p>
+                        {isSigningOut ? (
+                            <span className="h-6 w-6 animate-spin rounded-full border-2 border-gray-400 border-t-transparent" />
+                        ) : (
+                            <Image
+                                src='/assets/logout.svg'
+                                alt='logout'
+                                width={24}
+                                height={24}
+                            />
+                        )}
+                        <p className='text-light-2 max-lg:hidden hover:text-primary-500'>
+                            {isSigningOut ? 'Logging out...' : 'Logout'}
+                        </p>
                     </div>
                 )}
             </div>

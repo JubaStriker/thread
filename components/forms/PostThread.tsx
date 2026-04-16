@@ -81,8 +81,15 @@ const PostThread = ({ userId }: { userId: string }) => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="bg-primary-500">
-                    Post thread
+                <Button type="submit" className="bg-primary-500" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting ? (
+                        <span className="flex items-center gap-2">
+                            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                            Posting...
+                        </span>
+                    ) : (
+                        "Post thread"
+                    )}
                 </Button>
             </form>
 

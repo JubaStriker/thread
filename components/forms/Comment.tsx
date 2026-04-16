@@ -70,8 +70,12 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="comment-form_btn">
-                    Reply
+                <Button type="submit" className="comment-form_btn" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting ? (
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                    ) : (
+                        "Reply"
+                    )}
                 </Button>
             </form>
         </Form>
