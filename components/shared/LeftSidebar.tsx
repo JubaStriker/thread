@@ -1,6 +1,6 @@
 "use client"
 import { sidebarLinks } from '@/constants'
-import { SignOutButton, SignedIn, useAuth } from '@clerk/nextjs';
+import { SignOutButton, useAuth } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation'
@@ -9,7 +9,7 @@ const LeftSidebar = () => {
 
     const router = useRouter();
     const pathName = usePathname();
-    const { userId } = useAuth();
+    const { userId, isSignedIn } = useAuth();
 
     return (
         <section className="custom-scrollbar leftsidebar">
@@ -39,8 +39,8 @@ const LeftSidebar = () => {
             </div>
 
             <div className='mt-10 px-6'>
-                <SignedIn>
-                    <SignOutButton signOutCallback={() => router.push("/sign-in")}>
+                {isSignedIn && (
+                    <SignOutButton redirectUrl="/sign-in">
                         <div className='flex cursor-pointer gap-4 p-4'>
                             <Image
                                 src='/assets/logout.svg'
@@ -51,7 +51,7 @@ const LeftSidebar = () => {
                             <p className='text-light-2 max-lg:hidden hover:text-primary-500'>Logout</p>
                         </div>
                     </SignOutButton>
-                </SignedIn>
+                )}
             </div>
 
         </section>

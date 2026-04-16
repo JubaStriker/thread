@@ -1,6 +1,6 @@
 
 import { fetchUser, getActivity } from "@/lib/actions/user.action";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
