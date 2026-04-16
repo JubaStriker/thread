@@ -1,8 +1,9 @@
-import { OrganizationSwitcher, SignOutButton } from '@clerk/nextjs';
+import { OrganizationSwitcher } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { dark } from '@clerk/themes'
+import SignOutBtn from './SignOutBtn';
 
 const Topbar = async () => {
     const { userId } = await auth();
@@ -14,19 +15,8 @@ const Topbar = async () => {
             </Link>
 
             <div className='flex items-center gap-1'>
-                <div className='block md:hidden '>
-                    {userId && (
-                        <SignOutButton>
-                            <div className='flex cursor-pointer'>
-                                <Image
-                                    src='/assets/logout.svg'
-                                    alt='logout'
-                                    width={24}
-                                    height={24}
-                                />
-                            </div>
-                        </SignOutButton>
-                    )}
+                <div className='block md:hidden'>
+                    {userId && <SignOutBtn />}
                 </div>
 
                 <OrganizationSwitcher
@@ -38,7 +28,7 @@ const Topbar = async () => {
                     }} />
 
             </div>
-        </nav >
+        </nav>
     );
 };
 
